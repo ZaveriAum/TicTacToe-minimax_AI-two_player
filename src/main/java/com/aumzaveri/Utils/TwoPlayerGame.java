@@ -19,8 +19,6 @@ public class TwoPlayerGame {
     private int number_of_turns = 1;
 
     public int play(Button cell){
-        int[] index = get_index(cell);
-        matrix[index[0]][index[1]] = 1;
 
         Image image;
 
@@ -32,6 +30,9 @@ public class TwoPlayerGame {
             imageView.setFitHeight(30);
 
             cell.setGraphic(imageView);
+
+            int[] index = get_index(cell);
+            matrix[index[0]][index[1]] = 1;
 
             if(number_of_turns >= 5){
                 winner = analyze_game(index, 1);
@@ -50,14 +51,15 @@ public class TwoPlayerGame {
             // Setting the image on the button
             cell.setGraphic(imageView);
 
+            int[] index = get_index(cell);
+            matrix[index[0]][index[1]] = 0;
+
             if(number_of_turns >= 5){
                 winner = analyze_game(index, 0);
             }
             cross_turn = true;
         }
         number_of_turns++;
-        //print_matrix();
-        System.out.println(winner);
         return winner;
     }
 
@@ -69,28 +71,42 @@ public class TwoPlayerGame {
     }
 
     private int analyze_game(int[] last_input_index, int checker){
-        if (Arrays.equals(last_input_index, new int[]{1, 1})) {
-            if((matrix[0][1] == checker && checker== matrix[1][2])
-                    ||
-                (matrix[0][0] == checker && checker== matrix[2][2])
-                    ||
-                (matrix[1][0] == checker && checker== matrix[1][2])
-                    ||
-                (matrix[2][0] == checker && checker== matrix[0][2])
-            )
-                return checker;
+            // Check for column matches
+            int matches = 1;
+            int col = last_input_index[1];
+            while(col + 1 <= 2 && checker == matrix[last_input_index[0]][col + 1]) {
+                matches++;
+                col++;
+                if (matches == 3){
+                    return checker;
+                }
+            }
+            while(col >= 0 && checker == matrix[last_input_index[0]][col - 1]){
+                matches++;
+                col--;
+                if (matches == 3){
+                    return checker;
+                }
+            // Check for row matches
+            matches = 1;
+            int row = last_input_index[0];
+            while(row + 1 <= 2 && checker == matrix[last_input_index[0]][row + 1]) {
+                matches++;
+                row++;
+                if (matches == 3){
+                    return checker;
+                }
+            }
+            while(row >= 0 && checker == matrix[last_input_index[0]][row - 1]) {
+                matches++;
+                row--;
+                if (matches == 3) {
+                    return checker;
+                }
+            }
+            // Check for diagonal matches
         }
         return -1;
     }
 
-    private void print_matrix(){
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[i].length; j++) {
-                System.out.print(matrix[i][j] + " index ->" + "( " + i + ", " + j + " )");
-            }
-            System.out.println();
-            System.out.print("--------------------");
-            System.out.println();
-        }
-    }
 }
