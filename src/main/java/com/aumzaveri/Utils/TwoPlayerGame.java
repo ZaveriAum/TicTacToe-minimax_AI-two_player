@@ -71,40 +71,36 @@ public class TwoPlayerGame {
     }
 
     private int analyze_game(int[] last_input_index, int checker){
-            // Check for column matches
-            int matches = 1;
-            int col = last_input_index[1];
-            while(col + 1 <= 2 && checker == matrix[last_input_index[0]][col + 1]) {
-                matches++;
-                col++;
-                if (matches == 3){
-                    return checker;
-                }
+        // Check for column matches
+        int matches = 1;
+        int col = last_input_index[1];
+        while(col + 1 <= 2 && checker == matrix[last_input_index[0]][col + 1]) {
+            matches++;
+            col++;
+            if (matches == 3)
+                return checker;
+        }
+        while(col - 1>= 0 && checker == matrix[last_input_index[0]][col - 1]){
+            matches++;
+            col--;
+            if (matches == 3)
+                return checker;
             }
-            while(col >= 0 && checker == matrix[last_input_index[0]][col - 1]){
-                matches++;
-                col--;
-                if (matches == 3){
-                    return checker;
-                }
-            // Check for row matches
-            matches = 1;
-            int row = last_input_index[0];
-            while(row + 1 <= 2 && checker == matrix[last_input_index[0]][row + 1]) {
-                matches++;
-                row++;
-                if (matches == 3){
-                    return checker;
-                }
-            }
-            while(row >= 0 && checker == matrix[last_input_index[0]][row - 1]) {
-                matches++;
-                row--;
-                if (matches == 3) {
-                    return checker;
-                }
-            }
-            // Check for diagonal matches
+        // Check for row matches
+        matches = 1;
+        int row = last_input_index[0];
+        while(row + 1 <= 2 && checker == matrix[row + 1][last_input_index[1]]) {
+            matches++;
+            row++;
+            if (matches == 3)
+                return checker;
+        }
+        while(row - 1 >= 0 && checker == matrix[row - 1][last_input_index[1]]) {
+            matches++;
+            row--;
+            if (matches == 3)
+                return checker;
+        // Check for diagonal matches
         }
         return -1;
     }
