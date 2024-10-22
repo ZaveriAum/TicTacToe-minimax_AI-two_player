@@ -8,21 +8,24 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="two_player_anchor_pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aumzaveri.Controller.TwoPlayerGameController">
+<AnchorPane fx:id="two_player_anchor_pane" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: F3C623;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.aumzaveri.Controller.TwoPlayerGameController">
    <children>
-      <Label layoutX="333.0" layoutY="13.0" text="2 PLayer">
+      <Label layoutX="333.0" layoutY="13.0" text="2 PLayer" textFill="#10375c">
          <font>
             <Font size="36.0" />
          </font>
       </Label>
       <Button fx:id="exit_btn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#exitTwoPlayerTicTacToe" style="-fx-background-color: red;" text="Exit" textFill="WHITE" />
-      <Label fx:id="result_label" alignment="CENTER" contentDisplay="CENTER" layoutX="285.0" layoutY="567.0" prefHeight="18.0" prefWidth="229.0" />
-      <Label fx:id="turn_label" layoutX="651.0" layoutY="26.0" text="X turn" textAlignment="CENTER" textOverrun="WORD_ELLIPSIS">
+      <Label fx:id="result_label" alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="547.0" prefHeight="38.0" prefWidth="260.0" textFill="#f4f6ff">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font></Label>
+      <Label fx:id="turn_label" layoutX="651.0" layoutY="26.0" text="X turn" textAlignment="CENTER" textFill="#10375c" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <GridPane gridLinesVisible="true" layoutX="100.0" layoutY="129.0" prefHeight="400.0" prefWidth="600.0">
+      <GridPane fx:id="tictactoe_frame" gridLinesVisible="true" layoutX="100.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -34,15 +37,15 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" prefHeight="289.0" prefWidth="272.0" text="Button" GridPane.columnIndex="0" GridPane.rowIndex="0" />
-            <Button mnemonicParsing="false" prefHeight="311.0" prefWidth="303.0" text="Button" GridPane.columnIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="190.0" prefWidth="270.0" text="Button" GridPane.columnIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="196.0" prefWidth="262.0" text="Button" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="190.0" prefWidth="246.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="203.0" prefWidth="355.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Button mnemonicParsing="false" prefHeight="168.0" prefWidth="266.0" text="Button" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="181.0" prefWidth="271.0" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button mnemonicParsing="false" prefHeight="174.0" prefWidth="314.0" text="Button" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+            <Button fx:id="zz" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="289.0" prefWidth="272.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+            <Button fx:id="zo" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="311.0" prefWidth="303.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+            <Button fx:id="zt" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="190.0" prefWidth="270.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+            <Button fx:id="oz" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="196.0" prefWidth="262.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+            <Button fx:id="oo" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="190.0" prefWidth="246.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Button fx:id="ot" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="203.0" prefWidth="355.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+            <Button fx:id="tz" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="168.0" prefWidth="266.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+            <Button fx:id="to" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="181.0" prefWidth="271.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Button fx:id="tt" mnemonicParsing="false" onAction="#onButtonClick" prefHeight="174.0" prefWidth="314.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
          </children>
       </GridPane>
    </children>

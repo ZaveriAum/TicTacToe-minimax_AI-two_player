@@ -1,17 +1,36 @@
 package com.aumzaveri.Controller;
 
-import com.aumzaveri.Utils.SceneSwitcher;
+import com.aumzaveri.Utils.Util;
+import com.aumzaveri.Utils.TwoPlayerGame;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
 
 import java.io.IOException;
 
 public class TwoPlayerGameController {
+
+    @FXML
+    private final TwoPlayerGame twoPlayerGame = new TwoPlayerGame();
+
+    @FXML
+    private GridPane tictactoe_frame;
+
     @FXML
     private AnchorPane two_player_anchor_pane;
 
     @FXML
     private void exitTwoPlayerTicTacToe() throws IOException {
-        new SceneSwitcher(two_player_anchor_pane, "hello-view.fxml");
+        Util.SwitchScene(two_player_anchor_pane, "hello-view.fxml");
+    }
+
+    @FXML
+    private void onButtonClick(ActionEvent event) throws IOException {
+        Button cell = (Button)event.getSource();
+        int winner = twoPlayerGame.play(cell);
+        cell.setDisable(true);
+        Util.ShowWinner(winner, two_player_anchor_pane, "two-player-view.fxml");
     }
 }
