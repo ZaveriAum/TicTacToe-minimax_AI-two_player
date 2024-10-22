@@ -16,20 +16,9 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HelloController {
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
-
-    @FXML
-    private Label welcomeText;
 
     @FXML
     private AnchorPane welcomeAnchorPane;
-
-    @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-    }
 
     @FXML
     private void openPlayerVsAI() throws IOException {
