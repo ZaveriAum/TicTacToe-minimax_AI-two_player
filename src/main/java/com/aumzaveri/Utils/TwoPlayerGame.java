@@ -1,6 +1,7 @@
 package com.aumzaveri.Utils;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
@@ -18,11 +19,13 @@ public class TwoPlayerGame {
 
     private int number_of_turns = 1;
 
-    public int play(Button cell){
+    public int play(Button cell, Label turn_label){
 
         Image image;
 
         if(cross_turn){
+            turn_label.setText("O's turn");
+
             image = new Image(getClass().getResource("/com/images/cross.png").toExternalForm());
             ImageView imageView = new ImageView(image);
 
@@ -41,6 +44,8 @@ public class TwoPlayerGame {
             cross_turn = false;
         }
         else{
+            turn_label.setText("X's turn");
+
             image = new Image(getClass().getResource("/com/images/circle.png").toExternalForm());
             ImageView imageView = new ImageView(image);
 

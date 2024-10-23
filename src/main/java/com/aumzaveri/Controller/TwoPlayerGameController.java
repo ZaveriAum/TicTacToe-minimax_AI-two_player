@@ -5,6 +5,7 @@ import com.aumzaveri.Utils.TwoPlayerGame;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
@@ -16,7 +17,7 @@ public class TwoPlayerGameController {
     private final TwoPlayerGame twoPlayerGame = new TwoPlayerGame();
 
     @FXML
-    private GridPane tictactoe_frame;
+    private Label turn_label;
 
     @FXML
     private AnchorPane two_player_anchor_pane;
@@ -29,7 +30,7 @@ public class TwoPlayerGameController {
     @FXML
     private void onButtonClick(ActionEvent event) throws IOException {
         Button cell = (Button)event.getSource();
-        int winner = twoPlayerGame.play(cell);
+        int winner = twoPlayerGame.play(cell, turn_label);
         cell.setDisable(true);
         Util.ShowWinner(winner, two_player_anchor_pane, "two-player-view.fxml");
     }

@@ -16,11 +16,7 @@
          </font>
       </Label>
       <Button fx:id="exit_btn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#exitTwoPlayerTicTacToe" style="-fx-background-color: red;" text="Exit" textFill="WHITE" />
-      <Label fx:id="result_label" alignment="CENTER" contentDisplay="CENTER" layoutX="270.0" layoutY="547.0" prefHeight="38.0" prefWidth="260.0" textFill="#f4f6ff">
-         <font>
-            <Font name="System Bold" size="24.0" />
-         </font></Label>
-      <Label fx:id="turn_label" layoutX="651.0" layoutY="26.0" text="X turn" textAlignment="CENTER" textFill="#10375c" textOverrun="WORD_ELLIPSIS">
+      <Label fx:id="turn_label" layoutX="651.0" layoutY="26.0" text="X's turn" textAlignment="CENTER" textFill="#10375c" textOverrun="WORD_ELLIPSIS">
          <font>
             <Font size="18.0" />
          </font>
