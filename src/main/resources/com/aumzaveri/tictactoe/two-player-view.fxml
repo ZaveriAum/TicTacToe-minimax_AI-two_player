@@ -12,7 +12,7 @@
    <children>
       <Label layoutX="333.0" layoutY="13.0" text="2 PLayer" textFill="#10375c">
          <font>
-            <Font size="36.0" />
+            <Font name="System Bold" size="36.0" />
          </font>
       </Label>
       <Button fx:id="exit_btn" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#exitTwoPlayerTicTacToe" style="-fx-background-color: red;" text="Exit" textFill="WHITE" />

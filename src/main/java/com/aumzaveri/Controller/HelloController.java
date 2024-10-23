@@ -14,11 +14,11 @@ public class HelloController {
 
     @FXML
     private void openPlayerVsAI() throws IOException {
-        Util.SwitchScene(welcomeAnchorPane, "AI-view.fxml");
+        Util.SwitchScene(welcomeAnchorPane, "selection-view.fxml");
     }
 
     @FXML
-    private void openTwoPlayer(ActionEvent event) throws IOException {
+    private void openTwoPlayer() throws IOException {
         Util.SwitchScene(welcomeAnchorPane, "two-player-view.fxml");
     }
 }

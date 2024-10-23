@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.util.*;
 
 public class Util {
+    public static int user_selection;
+
     public static void SwitchScene(AnchorPane currentAnchorPane, String fxml) throws IOException {
         AnchorPane nextAnchorPane = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource(fxml)));
         currentAnchorPane.getChildren().removeAll();
