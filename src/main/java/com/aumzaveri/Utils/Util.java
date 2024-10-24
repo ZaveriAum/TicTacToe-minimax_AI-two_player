@@ -26,8 +26,10 @@ public class Util {
         if(winner != -1){
             if(winner == 1)
                 Util.ShowResult("X won this game of Tic-Tac-Toe");
-            else
+            else if(winner == 0)
                 Util.ShowResult("O won this game of Tic-Tac-Toe");
+            else
+                Util.ShowResult("It's a Draw well played you two.");
             Util.SwitchScene(currentAnchorPane, fxml);
         }
     }

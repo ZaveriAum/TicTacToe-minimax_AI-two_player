@@ -147,6 +147,8 @@ public class TwoPlayerGame {
             if(matches == 3)
                 return checker;
         }
+        if(number_of_turns == 9)
+            return 2;
         return -1;
     }
 
