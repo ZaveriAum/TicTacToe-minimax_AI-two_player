@@ -13,9 +13,9 @@ public class TwoPlayerGame {
 
     private boolean cross_turn = true;
 
-    private int winner = -1;
+    private int winner = 2;
 
-    private int[][] matrix = {{-1, -1, -1}, {-1, -1, -1}, {-1, -1, -1}};
+    private int[][] matrix = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 
     private int number_of_turns = 1;
 
@@ -57,10 +57,10 @@ public class TwoPlayerGame {
             cell.setGraphic(imageView);
 
             int[] index = get_index(cell);
-            matrix[index[0]][index[1]] = 0;
+            matrix[index[0]][index[1]] = -1;
 
             if(number_of_turns >= 5){
-                winner = analyze_game(index, 0);
+                winner = analyze_game(index, -1);
             }
             cross_turn = true;
         }
@@ -69,7 +69,7 @@ public class TwoPlayerGame {
     }
 
     private int[] get_index(Button cell){
-        int[] index = {-1, -1};
+        int[] index = {0, 0};
         index[0] = GridPane.getRowIndex(cell);
         index[1] = GridPane.getColumnIndex(cell);
         return index;
@@ -148,8 +148,8 @@ public class TwoPlayerGame {
                 return checker;
         }
         if(number_of_turns == 9)
-            return 2;
-        return -1;
+            return 0;
+        return 2;
     }
 
 }
