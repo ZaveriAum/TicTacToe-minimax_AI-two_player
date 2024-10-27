@@ -31,7 +31,6 @@ public class TwoPlayerGameController {
     private void onButtonClick(ActionEvent event) throws IOException {
         Button cell = (Button)event.getSource();
         int winner = twoPlayerGame.play(cell, turn_label);
-        cell.setDisable(true);
         Util.ShowWinner(winner, two_player_anchor_pane, "two-player-view.fxml");
     }
 }

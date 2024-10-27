@@ -11,15 +11,17 @@ import java.util.Objects;
 
 public class TwoPlayerGame {
 
-    private boolean cross_turn = true;
+    private static boolean cross_turn = true;
 
-    private int winner = 2;
+    private static int winner = 2;
 
-    private int[][] matrix = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+    private static int[][] matrix = {{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
 
-    private int number_of_turns = 1;
+    private static int number_of_turns = 1;
 
     public int play(Button cell, Label turn_label){
+
+        cell.setDisable(true);
 
         Image image;
 
@@ -38,7 +40,7 @@ public class TwoPlayerGame {
             matrix[index[0]][index[1]] = 1;
 
             if(number_of_turns >= 5){
-                winner = analyze_game(index, 1);
+                winner = analyze_game();
             }
 
             cross_turn = false;
@@ -60,7 +62,7 @@ public class TwoPlayerGame {
             matrix[index[0]][index[1]] = -1;
 
             if(number_of_turns >= 5){
-                winner = analyze_game(index, -1);
+                winner = analyze_game();
             }
             cross_turn = true;
         }
@@ -75,81 +77,38 @@ public class TwoPlayerGame {
         return index;
     }
 
-    private int analyze_game(int[] last_input_index, int checker){
+    public static int analyze_game(){
         // Check for column matches
-        int matches = 1;
-        int col = last_input_index[1];
-        while(col - 1>= 0 && checker == matrix[last_input_index[0]][col - 1]){
-            matches++;
-            col--;
-            if (matches == 3)
-                return checker;
+        for (int i = 0; i < 3; i++) {
+            if (matrix[0][i] == matrix[1][i] && matrix[1][i] == matrix[2][i])
+                return matrix[0][i];
         }
-        col = last_input_index[1];
-        while(col + 1 <= 2 && checker == matrix[last_input_index[0]][col + 1]) {
-            matches++;
-            col++;
-            if (matches == 3)
-                return checker;
-        }
+
         // Check for row matches
-        matches = 1;
-        int row = last_input_index[0];
-        while(row - 1 >= 0 && checker == matrix[row - 1][last_input_index[1]]) {
-            matches++;
-            row--;
-            if (matches == 3)
-                return checker;
+        for (int i = 0; i < 3; i++) {
+            if (matrix[i][0] == matrix[i][1] && matrix[i][1] == matrix[i][2])
+                return matrix[i][0];
         }
-        row = last_input_index[0];
-        while(row + 1 <= 2 && checker == matrix[row + 1][last_input_index[1]]) {
-            matches++;
-            row++;
-            if (matches == 3)
-                return checker;
-        }
-        // Check for positive slope diagonal matches
-        matches = 1;
-        row = last_input_index[0];
-        col = last_input_index[1];
-        while(col + 1 <= 2 && row - 1 >= 0 && checker == matrix[row - 1][col + 1]){
-            matches++;
-            row--;
-            col++;
-            if(matches == 3)
-                return checker;
-        }
-        row = last_input_index[0];
-        col = last_input_index[1];
-        while( col -1 >= 0 && row + 1 <= 2 && checker == matrix[row + 1][col - 1]){
-            matches++;
-            row++;
-            col--;
-            if(matches == 3)
-                return checker;
-        }
-        matches = 1;
-        row = last_input_index[0];
-        col = last_input_index[1];
-        while(col + 1 <= 2 && row + 1 <= 2 && checker == matrix[row + 1][col + 1]){
-            matches++;
-            row++;
-            col++;
-            if(matches == 3)
-                return checker;
-        }
-        row = last_input_index[0];
-        col = last_input_index[1];
-        while(col - 1 >= 0 && row - 1 >= 0 && checker == matrix[row - 1][col - 1]){
-            matches++;
-            row--;
-            col--;
-            if(matches == 3)
-                return checker;
-        }
+
+        // Check for positive diagonal
+        if(matrix[2][0] == matrix[1][1] && matrix[1][1] == matrix[0][2])
+            return matrix[1][1];
+
+        // Check for negative diagonal
+        if(matrix[0][0] == matrix[1][1] && matrix[1][1] == matrix[2][2])
+            return matrix[1][1];
         if(number_of_turns == 9)
             return 0;
         return 2;
     }
 
+    public static void resetGame(){
+        TwoPlayerGame.winner = 2;
+
+        TwoPlayerGame.matrix = new int[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
+
+        TwoPlayerGame.number_of_turns = 1;
+
+        TwoPlayerGame.cross_turn = true;
+    }
 }

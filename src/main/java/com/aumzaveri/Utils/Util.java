@@ -23,13 +23,19 @@ public class Util {
     }
 
     public static void ShowWinner(int winner, AnchorPane currentAnchorPane, String fxml) throws IOException {
-        if(winner != 2){
-            if(winner == 1)
+        if(winner != 2) {
+            if (winner == 1){
                 Util.ShowResult("X won this game of Tic-Tac-Toe");
-            else if(winner == -1)
+                TwoPlayerGame.resetGame();
+            }
+            else if(winner == -1) {
                 Util.ShowResult("O won this game of Tic-Tac-Toe");
-            else
+                TwoPlayerGame.resetGame();
+            }
+            else {
                 Util.ShowResult("It's a Draw well played you two.");
+                TwoPlayerGame.resetGame();
+            }
             Util.SwitchScene(currentAnchorPane, fxml);
         }
     }
