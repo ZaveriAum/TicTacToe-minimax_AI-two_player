@@ -1,5 +1,6 @@
 package com.aumzaveri.Controller;
 
+import com.aumzaveri.Utils.AI_Game;
 import com.aumzaveri.Utils.Util;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,17 +16,18 @@ public class TurnSelection {
     @FXML
     private void onExit() throws IOException {
         Util.SwitchScene(selection_anchor_pane, "hello-view.fxml");
+        Util.ResetBoard();
     }
 
     @FXML
     private void onCrossSelect() throws IOException {
-        Util.user_selection = 1;
+        AI_Game.ai_playing_cross = false;
         Util.SwitchScene(selection_anchor_pane, "AI-view.fxml");
     }
 
     @FXML
     private void onCircleSelect() throws IOException {
-        Util.user_selection = 0;
+        AI_Game.ai_playing_cross = true;
         Util.SwitchScene(selection_anchor_pane, "AI-view.fxml");
     }
 }

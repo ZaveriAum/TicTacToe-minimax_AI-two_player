@@ -1,22 +1,16 @@
 package com.aumzaveri.Utils;
 
-import java.util.ArrayList;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 
 public class AI_Game {
-    private int number_of_moves;
 
-    private int[][][] position_not_visited = {{{0,0}, {0,1}, {0, 2}},{{1,0}, {1,1}, {0, 2}}, {{2,0}, {2,1}, {2, 2}}};
+    public static boolean ai_playing_cross;
 
-    private boolean ai_playing_cross;
+    private static boolean cross_turn;
 
-    private int[][] matrix;
+    public static int play_game(Button cell, Label turn_label){
+        return 1;
+    }
 
-    // How will the program travels
-    // If user is cross then it select the first spot
-    // After that ai wil analyse the position and will send the index where it wants to put the circle
-    // and this goes on and on until there is a winner, or it's a draw.
-
-//    private int[] minimax(int[][] matrix,int depth,int checker, int[] last_input_index){
-//
-//    }
 }

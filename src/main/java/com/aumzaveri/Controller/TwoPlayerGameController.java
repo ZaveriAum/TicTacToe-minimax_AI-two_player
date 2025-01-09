@@ -24,6 +24,7 @@ public class TwoPlayerGameController {
 
     @FXML
     private void exitTwoPlayerTicTacToe() throws IOException {
+        Util.ResetBoard();
         Util.SwitchScene(two_player_anchor_pane, "hello-view.fxml");
     }
 
