@@ -16,7 +16,6 @@ public class TurnSelection {
     @FXML
     private void onExit() throws IOException {
         Util.SwitchScene(selection_anchor_pane, "hello-view.fxml");
-        Util.ResetBoard();
     }
 
     @FXML
@@ -28,6 +27,7 @@ public class TurnSelection {
     @FXML
     private void onCircleSelect() throws IOException {
         AI_Game.ai_playing_cross = true;
+        Util.cross_turn=false;
         Util.SwitchScene(selection_anchor_pane, "AI-view.fxml");
     }
 }

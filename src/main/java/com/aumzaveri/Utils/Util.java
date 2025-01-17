@@ -21,7 +21,10 @@ public class Util {
 
     public static boolean cross_turn = true;
 
-    public static int winner = 2;
+    public static int winner = 2; // if winner status is 2 - nothing has happened
+                                  // if winner status is 0 - it's a draw
+                                  // if winner status is 1 - X won
+                                  // if winner status is -1 - O won
 
     public static void SwitchScene(AnchorPane currentAnchorPane, String fxml) throws IOException {
         AnchorPane nextAnchorPane = FXMLLoader.load(Objects.requireNonNull(HelloApplication.class.getResource(fxml)));
@@ -46,7 +49,6 @@ public class Util {
 
     private static void ShowResult(String message){
         Util.ResetBoard();
-        System.out.println(number_of_turns);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Winner");
         alert.setHeaderText(message);
@@ -58,6 +60,27 @@ public class Util {
             alert.close();
         }
     }
+
+    public static void ConfirmExit(AnchorPane anchorPane, String screen) throws IOException {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Are you sure");
+        alert.setHeaderText("The game will not be stored");
+        alert.setContentText("To exit press ok");
+
+        ButtonType okButton = new ButtonType("OK");
+        ButtonType cancelButton = new ButtonType("Cancel");
+
+        alert.getButtonTypes().setAll(okButton, cancelButton);
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == okButton) {
+            Util.ResetBoard();
+            Util.SwitchScene(anchorPane, screen);
+            alert.close();
+        }
+
+    }
+
 
     public static void ResetBoard(){
         matrix = new int[][]{{0, 0, 0}, {0, 0, 0}, {0, 0, 0}};
